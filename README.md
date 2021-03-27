@@ -4,7 +4,8 @@ A [befunge](https://esolangs.org/wiki/Befunge) interpreter written in [go](www.g
 
 More specifically, this is a befunge93 interpreter. It can run files with all befunge93 supported
 characters. The size of the grid is the standard 80x25. Characters outside of this grid will not
-be parsed, so this space can be used for comments.
+be parsed, so this space can be used for comments. If the file has a smaller grid, it is padded
+with spaces.
 
 ### How To Use?
 Create a file with a befunge program in it (e.g. [factorial.bf](factorial.bf), this program asks
