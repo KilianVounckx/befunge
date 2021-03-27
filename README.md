@@ -6,9 +6,9 @@ The interpreter can run befunge files.
 
 ###How To Use?
 Create a file with a befunge program in it (e.g. [factorial.bf](factorial.bf), this program asks
-the user for a number and calculates the factorial). Then run:
+the user for a number and calculates the factorial). Then run in a terminal:
 ```shell
->> befunge factorial.bf
+befunge factorial.bf
 ```
 
 ###Debug Mode
