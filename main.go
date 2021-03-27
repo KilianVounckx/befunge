@@ -106,7 +106,6 @@ func main() {
 
 	skipping := false
 	stringing := false
-	skipDebug := false
 
 	if debug {
 		fmt.Printf("program:\n%s\n", programs)
@@ -114,12 +113,11 @@ func main() {
 
 loop:
 	for {
-		if debug && !skipDebug {
+		if debug {
 			bufio.NewReader(os.Stdin).ReadBytes('\n') 
 			fmt.Printf("PC: (%d, %d)\n", pcx, pcy)
-			fmt.Printf("character: %c\n", program[pcy][pcx])
+			fmt.Printf("character: %q\n", program[pcy][pcx])
 		}
-		skipDebug = false
 
 		if skipping {
 			skipping = false
@@ -220,7 +218,6 @@ loop:
 			case '@':
 				break loop
 			case ' ':
-				skipDebug = true
 			default:
 				fmt.Printf("Invalid character: %q\n", command)
 				return
@@ -229,7 +226,7 @@ loop:
 
 		pcx, pcy = step(pcx, pcy, dirx, diry)
 
-		if debug && !skipDebug {
+		if debug {
 			fmt.Printf("stack: %v\n", stack)
 		}
 	}
