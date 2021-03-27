@@ -5,10 +5,16 @@ import (
 	"errors"
 	"flag"
 	"fmt"
+	"math/rand"
 	"os"
 	"strconv"
 	"strings"
+	"time"
 )
+
+func init() {
+	rand.Seed(time.Now().UnixNano())
+}
 
 const USAGE = `befunge is an esoteric programming language.
 Usage:
@@ -155,6 +161,22 @@ loop:
 			case '^':
 				dirx = 0
 				diry = -1
+			case '?':
+				dir := rand.Intn(4)
+				switch dir {
+				case 0:
+					dirx = 1
+					diry = 0
+				case 1:
+					dirx = -1
+					diry = 0
+				case 2:
+					dirx = 0
+					diry = 1
+				default:
+					dirx = 0
+					diry = -1
+				}
 			case '_':
 				diry = 0
 				stack, dirx = condition(stack)
@@ -211,7 +233,6 @@ loop:
 			fmt.Printf("stack: %v\n", stack)
 		}
 	}
-	fmt.Println()
 }
 
 func step(pcx, pcy, dirx, diry int) (int, int) {
